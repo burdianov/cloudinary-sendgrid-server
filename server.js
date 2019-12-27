@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 
+// import routes
+const feedbackRoutes = require("./routes/feedback");
+
 const app = express();
 
 // middleware
@@ -12,11 +15,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // routes
-app.get("/api", (req, res) => {
-  res.json({
-    data: "you hit api"
-  });
-});
+app.use("/api", feedbackRoutes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
